@@ -1,0 +1,55 @@
+---
+title: "Imóveis - Ponta Grossa (PR)"
+author: "Elton Dntas de Oliveira Mesquita"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Pacotes
+
+```{r}
+library(tidyverse)
+```
+
+# Análise Exploratória
+
+```{r}
+dados = read.csv("dados/casas-ponta-grossa.csv",
+                 encoding = "UTF-8",
+                 col.names = c("REF","BANHEIROS","QUARTOS","SUITES",
+                               "VAGAS","BAIRRO","AREA","VALOR"))
+```
+
+```{r}
+library(DataExplorer)
+
+DataExplorer::plot_correlation(dados)
+```
+
+Tratar Missing Values
+
+Ajuste de um Modelo de Regressão Linear
+
+Testar Modelos de ML
+
+Redução de Dimensionalidade (PCA)
+
+Seleção de Variáveis (AIC)
+
+Regularização (Ridge e Lasso)
+
+```{r}
+hist(dados$BANHEIROS)
+summary(dados)
+
+mean(dados$BANHEIROS)
+
+hist(dados$BANHEIROS)
+abline(v=c(mean(dados$BANHEIROS,na.rm = T),
+           median(dados$BANHEIROS,na.rm = T)), lwd=2, col=c("red","blue"))
+
+dados2 = na.omit(dados)
+```
